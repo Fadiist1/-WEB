@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luxury hotel booking. Discover premium rooms, exclusive facilities, and unforgettable experiences.">
+    <meta name="keywords" content="hotel, luxury, booking, rooms, travel, accommodation, hotel luxury, resort">
+    <meta name="author" content="Hotel Luxury Team">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hotel Luxury - Discover a New Dimension">
+    <meta property="og:description" content="Luxury hotel booking. Discover premium rooms, exclusive facilities, and unforgettable experiences.">
+    <meta property="og:image" content="pictures/building.png">
+    <meta property="og:url" content="https://yourdomain.com">
+
+    <title>Hotel Luxury</title>
+    <link rel="icon" href="pictures/logo.ico" type="image/x-icon">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link rel="stylesheet" href="stylehome.css">
+</head>
+<body>
+
+    <!-- ========== BOOTSTRAP TOAST CONTAINER ========== -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Hotel Luxury</strong>
+                <small>just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                ✅ Бронирование успешно оформлено!
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== BOOTSTRAP MODAL: RESERVATION ========== -->
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="reservationModalLabel">Book Your Stay</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Progress bar for form completion -->
+                    <div class="mb-4">
+                        <label class="small text-muted mb-1">Form completion</label>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <form id="bookingForm">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" placeholder="John Doe" required
+                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Enter your full name as in passport">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="you@example.com" required>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <label class="form-label">Check-in</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Check-out</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label class="form-label">Room Type</label>
+                            <select class="form-select">
+                                <option selected>Deluxe Contrast Room</option>
+                                <option>Luxury Twin Room</option>
+                                <option>Single Contrast Room</option>
+                                <option>Presidential Suite</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn w-100">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== HEADER WITH BOOTSTRAP NAVBAR ========== -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <div class="container-fluid p-0">
+                    <!-- Logo -->
+                    <a class="navbar-brand p-0" href="https://praktika/home.html" aria-label="На главную страницу">
+                        <img src="pictures/logo.svg" alt="Hotel Luxury Logo" height="40">
+                    </a>
+
+                    <!-- Mobile Toggle -->
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Navbar Content -->
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav gap-lg-4">
+                            <li class="nav-item">
+                                <a class="nav-link nav__link--active" href="#">Home</a>
+                            </li>
+                            <!-- Dropdown Widget -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Branch
+                                </a>
+                                <ul class="dropdown-menu border-0 shadow">
+                                    <li><a class="dropdown-item" href="#">London</a></li>
+                                    <li><a class="dropdown-item" href="#">Paris</a></li>
+                                    <li><a class="dropdown-item" href="#">Dubai</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">All Locations</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Search</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About Us</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Pages
+                                </a>
+                                <ul class="dropdown-menu border-0 shadow">
+                                    <li><a class="dropdown-item" href="#">Rooms</a></li>
+                                    <li><a class="dropdown-item" href="#">Services</a></li>
+                                    <li><a class="dropdown-item" href="#">Gallery</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Reservation Button with Tooltip -->
+                    <div class="d-none d-lg-block">
+                        <button class="btn btn--header" data-bs-toggle="modal" data-bs-target="#reservationModal"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Book your luxury stay">
+                            Reservation
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== MAIN ========== -->
+    <main>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="row align-items-center g-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="hero__content">
+                            <h1 class="hero__title mb-3">Discover a hotel <br> that defies a new <br> dimension of luxury.</h1>
+                            <p class="hero__subtitle mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+                            <div class="hero__actions d-flex align-items-center gap-4">
+                                <a href="#rooms" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="View our premium rooms">Get Started</a>
+                                <button class="watch-video" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                    <img src="pictures/play-icon.svg" alt="Play">
+                                    <span>Watch video</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="hero__image-block">
+                            <div class="hero__circle-bg"></div>
+                            <img src="pictures/building.png" alt="Building" class="hero__building object-fit-cover" title="Внешний вид отеля">
+                            <div class="dot dot--1"></div>
+                            <div class="dot dot--2"></div>
+                            <div class="dot dot--3"></div>
+                            <div class="dot dot--4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== AVAILABILITY ===== -->
+        <section class="availability py-5" id="availability">
+            <div class="container">
+                <div class="availability__header text-center mb-5">
+                    <h2 class="section-title mb-3">Check Availability</h2>
+                    <p class="section-subtitle mb-0">It is a long established fact that a reader will be distracted <br> by the readable content of a page.</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-10">
+                        <div class="availability__card">
+                            <div class="row g-0">
+                                <div class="col-12 col-lg-6">
+                                    <div class="availability__image">
+                                        <img src="pictures/availability-hotel.png" alt="Hotel View" class="w-100 h-100 object-fit-cover" title="Вид из номера отеля">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="availability__form-container">
+                                        <img src="pictures/form-pattern.svg" alt="" class="availability__pattern">
+                                        <form class="availability__form">
+                                            <div class="form-group mb-4">
+                                                <label class="d-block mb-2">CHECK-IN</label>
+                                                <div class="input-wrapper">
+                                                    <input type="text" placeholder="Thu, 21 Jul 2022">
+                                                    <img src="pictures/icon-calendar.svg" alt="calendar">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label class="d-block mb-2">CHECK-OUT</label>
+                                                <div class="input-wrapper">
+                                                    <input type="text" placeholder="Fri, 22 Jul 2022">
+                                                    <img src="pictures/icon-calendar.svg" alt="calendar">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label class="d-block mb-2">GUESTS:</label>
+                                                <div class="input-wrapper">
+                                                    <input type="text" placeholder="1 Room" readonly>
+                                                    <img src="pictures/icon-arrow-down.svg" alt="select">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn-outline" data-bs-toggle="modal" data-bs-target="#reservationModal">CHECK AVAILABILITY</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ROOMS WITH TABS WIDGET ===== -->
+        <section class="rooms pb-5" id="rooms">
+            <div class="container">
+                <div class="rooms__header text-center mb-5">
+                    <h2 class="section-title mb-3">Our Most Popular Room</h2>
+                    <p class="section-subtitle mb-0">It is a long established fact that a reader will be distracted <br> by the readable content of a page.</p>
+                </div>
+
+                <!-- Tabs Widget for Room Details -->
+                <ul class="nav nav-pills justify-content-center mb-4" id="roomTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button" role="tab">All Rooms</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="deluxe-tab" data-bs-toggle="pill" data-bs-target="#deluxe" type="button" role="tab">Deluxe</button>
+                    </li>
+                    <!-- ✅ ПРАВКА 8: Добавлена вкладка Luxury -->
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="luxury-tab" data-bs-toggle="pill" data-bs-target="#luxury" type="button" role="tab">Luxury</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="suite-tab" data-bs-toggle="pill" data-bs-target="#suite" type="button" role="tab">Suites</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="roomTabsContent">
+                    <!-- All Rooms Tab -->
+                    <div class="tab-pane fade show active" id="all" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="room-card">
+                                    <img src="pictures/room-1.png" alt="Deluxe Contrast Room" class="room-card__img object-fit-cover" title="Deluxe Contrast Room">
+                                    <div class="room-card__info p-4 d-flex flex-column">
+                                        <h3 class="room-card__name mb-3">Deluxe Contrast Room</h3>
+                                        <div class="room-card__stats d-flex gap-3 flex-wrap mb-4">
+                                            <div class="stat"><img src="pictures/icon-sqm.svg" alt=""> 52 sqm</div>
+                                            <div class="stat"><img src="pictures/icon-bed.svg" alt=""> 2 Bed</div>
+                                            <div class="stat"><img src="pictures/icon-bath.svg" alt=""> 1 Bathroom</div>
+                                        </div>
+                                        <div class="room-card__price d-flex align-items-baseline gap-1 mt-auto">
+                                            <span class="price-num">$200</span> <span class="price-text">/ Night</span>
+                                        </div>
+                                        <!-- Collapse Widget: Read More -->
+                                        <div class="mt-3">
+                                            <button class="btn btn-sm btn-outline-secondary" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#room1Details" aria-expanded="false">
+                                                View Details
+                                            </button>
+                                            <div class="collapse mt-2" id="room1Details">
+                                                <small class="text-muted">Premium amenities, city view, king bed, minibar, workspace.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="room-card">
+                                    <img src="pictures/room-2.png" alt="Luxury Twin Room" class="room-card__img object-fit-cover" title="Luxury Twin Room">
+                                    <div class="room-card__info p-4 d-flex flex-column">
+                                        <h3 class="room-card__name mb-3">Luxury Twin Room</h3>
+                                        <div class="room-card__stats d-flex gap-3 flex-wrap mb-4">
+                                            <div class="stat"><img src="pictures/icon-sqm.svg" alt=""> 52 sqm</div>
+                                            <div class="stat"><img src="pictures/icon-bed.svg" alt=""> 2 Bed</div>
+                                            <div class="stat"><img src="pictures/icon-bath.svg" alt=""> 1 Bathroom</div>
+                                        </div>
+                                        <div class="room-card__price d-flex align-items-baseline gap-1 mt-auto">
+                                            <span class="price-num">$250</span> <span class="price-text">/ Night</span>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button class="btn btn-sm btn-outline-secondary" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#room2Details" aria-expanded="false">
+                                                View Details
+                                            </button>
+                                            <div class="collapse mt-2" id="room2Details">
+                                                <small class="text-muted">Twin beds, garden view, balcony, coffee maker, safe.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="room-card">
+                                    <img src="pictures/room-3.png" alt="Single Contrast Room" class="room-card__img object-fit-cover" title="Single Contrast Room">
+                                    <div class="room-card__info p-4 d-flex flex-column">
+                                        <h3 class="room-card__name mb-3">Single Contrast Room</h3>
+                                        <div class="room-card__stats d-flex gap-3 flex-wrap mb-4">
+                                            <div class="stat"><img src="pictures/icon-sqm.svg" alt=""> 52 sqm</div>
+                                            <div class="stat"><img src="pictures/icon-bed.svg" alt=""> 2 Bed</div>
+                                            <div class="stat"><img src="pictures/icon-bath.svg" alt=""> 1 Bathroom</div>
+                                        </div>
+                                        <div class="room-card__price d-flex align-items-baseline gap-1 mt-auto">
+                                            <span class="price-num">$280</span> <span class="price-text">/ Night</span>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button class="btn btn-sm btn-outline-secondary" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#room3Details" aria-expanded="false">
+                                                View Details
+                                            </button>
+                                            <div class="collapse mt-2" id="room3Details">
+                                                <small class="text-muted">Compact luxury, ocean view, premium toiletries, fast WiFi.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Deluxe Tab -->
+                    <div class="tab-pane fade" id="deluxe" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="room-card">
+                                    <img src="pictures/room-1.png" alt="Deluxe Contrast Room" class="room-card__img object-fit-cover">
+                                    <div class="room-card__info p-4 d-flex flex-column">
+                                        <h3 class="room-card__name mb-3">Deluxe Contrast Room</h3>
+                                        <div class="room-card__stats d-flex gap-3 flex-wrap mb-4">
+                                            <div class="stat"><img src="pictures/icon-sqm.svg" alt=""> 52 sqm</div>
+                                            <div class="stat"><img src="pictures/icon-bed.svg" alt=""> 2 Bed</div>
+                                        </div>
+                                        <div class="room-card__price d-flex align-items-baseline gap-1 mt-auto">
+                                            <span class="price-num">$200</span> <span class="price-text">/ Night</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ✅ ПРАВКА 8: Новый таб для Luxury -->
+                    <div class="tab-pane fade" id="luxury" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="room-card">
+                                    <img src="pictures/room-2.png" alt="Luxury Twin Room" class="room-card__img object-fit-cover">
+                                    <div class="room-card__info p-4 d-flex flex-column">
+                                        <h3 class="room-card__name mb-3">Luxury Twin Room</h3>
+                                        <div class="room-card__stats d-flex gap-3 flex-wrap mb-4">
+                                            <div class="stat"><img src="pictures/icon-sqm.svg" alt=""> 52 sqm</div>
+                                            <div class="stat"><img src="pictures/icon-bed.svg" alt=""> 2 Bed</div>
+                                        </div>
+                                        <div class="room-card__price d-flex align-items-baseline gap-1 mt-auto">
+                                            <span class="price-num">$250</span> <span class="price-text">/ Night</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Suite Tab -->
+                    <div class="tab-pane fade" id="suite" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="room-card">
+                                    <img src="pictures/room-3.png" alt="Single Contrast Room" class="room-card__img object-fit-cover">
+                                    <div class="room-card__info p-4 d-flex flex-column">
+                                        <h3 class="room-card__name mb-3">Single Contrast Room</h3>
+                                        <div class="room-card__stats d-flex gap-3 flex-wrap mb-4">
+                                            <div class="stat"><img src="pictures/icon-sqm.svg" alt=""> 52 sqm</div>
+                                            <div class="stat"><img src="pictures/icon-bed.svg" alt=""> 2 Bed</div>
+                                        </div>
+                                        <div class="room-card__price d-flex align-items-baseline gap-1 mt-auto">
+                                            <span class="price-num">$280</span> <span class="price-text">/ Night</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FACILITIES ===== -->
+        <section class="facilities py-5" id="facilities">
+            <div class="container">
+                <div class="facilities__header text-center mb-5">
+                    <span class="section-top-title d-block mb-2">OUR SERVICES</span>
+                    <h2 class="section-title mb-0">Hotel Facilities</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="facility-card p-4 d-flex justify-content-between align-items-start h-100">
+                            <div class="facility-card__content">
+                                <h3 class="facility-card__title mb-3">Pick up & Drop</h3>
+                                <p class="facility-card__text mb-0">It is a long established fact that a reader will be distracted by the readable content of a page.</p>
+                            </div>
+                            <div class="facility-card__icon">
+                                <img src="pictures/icon-car.png" alt="Pick up" class="facility-icon"
+                                     data-bs-toggle="tooltip" data-bs-placement="top" title="24/7 airport transfer">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="facility-card p-4 d-flex justify-content-between align-items-start h-100">
+                            <div class="facility-card__content">
+                                <h3 class="facility-card__title mb-3">Parking Space</h3>
+                                <p class="facility-card__text mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                            <div class="facility-card__icon">
+                                <img src="pictures/icon-parking.png" alt="Parking" class="facility-icon"
+                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Secure underground parking">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="facility-card p-4 d-flex justify-content-between align-items-start h-100">
+                            <div class="facility-card__content">
+                                <h3 class="facility-card__title mb-3">Room Services</h3>
+                                <p class="facility-card__text mb-0">It is a long established fact that a reader will be distracted by the readable content of a page.</p>
+                            </div>
+                            <div class="facility-card__icon">
+                                <img src="pictures/icon-room-service.png" alt="Room Service" class="facility-icon"
+                                     data-bs-toggle="tooltip" data-bs-placement="top" title="24/7 in-room dining">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="facility-card p-4 d-flex justify-content-between align-items-start h-100">
+                            <div class="facility-card__content">
+                                <h3 class="facility-card__title mb-3">Swimming Pool</h3>
+                                <p class="facility-card__text mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                            <div class="facility-card__icon">
+                                <img src="pictures/icon-pool.png" alt="Pool" class="facility-icon"
+                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Heated indoor & outdoor pools">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="facility-card p-4 d-flex justify-content-between align-items-start h-100">
+                            <div class="facility-card__content">
+                                <h3 class="facility-card__title mb-3">Fibre Internet</h3>
+                                <p class="facility-card__text mb-0">It is a long established fact that a reader will be distracted by the readable content of a page.</p>
+                            </div>
+                            <div class="facility-card__icon">
+                                <img src="pictures/icon-wifi.png" alt="Wifi" class="facility-icon"
+                                     data-bs-toggle="tooltip" data-bs-placement="top" title="High-speed WiFi throughout">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="facility-card p-4 d-flex justify-content-between align-items-start h-100">
+                            <div class="facility-card__content">
+                                <h3 class="facility-card__title mb-3">Breakfast</h3>
+                                <p class="facility-card__text mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                            <div class="facility-card__icon">
+                                <img src="pictures/icon-breakfast.png" alt="Breakfast" class="facility-icon"
+                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Gourmet breakfast buffet">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STATS ===== -->
+        <section class="stats pb-5" id="stats">
+            <h2 class="visually-hidden">⠀</h2>
+            <div class="container">
+                <div class="row align-items-center justify-content-center g-4">
+                    <div class="col-6 col-lg-auto text-center stats__item">
+                        <span class="stats__number d-block mb-2">302 +</span>
+                        <span class="stats__label">Room & Suites</span>
+                    </div>
+                    <div class="col-1 d-none d-lg-block"><div class="stats__divider"></div></div>
+                    <div class="col-6 col-lg-auto text-center stats__item">
+                        <span class="stats__number d-block mb-2">25</span>
+                        <span class="stats__label">Restaurant</span>
+                    </div>
+                    <div class="col-1 d-none d-lg-block"><div class="stats__divider"></div></div>
+                    <div class="col-6 col-lg-auto text-center stats__item">
+                        <span class="stats__number d-block mb-2">510+</span>
+                        <span class="stats__label">Exceptional Food</span>
+                    </div>
+                    <div class="col-1 d-none d-lg-block"><div class="stats__divider"></div></div>
+                    <div class="col-6 col-lg-auto text-center stats__item">
+                        <span class="stats__number d-block mb-2">65</span>
+                        <span class="stats__label">Destination</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HISTORY ===== -->
+        <section class="history py-5" id="history">
+            <div class="container">
+                <div class="row align-items-center g-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="history__content position-relative">
+                            <h2 class="history__title mb-4">Discover Our History</h2>
+                            <p class="history__text mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+                            <p class="history__text mb-4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                            <div class="history__actions d-flex align-items-center gap-4 mt-4">
+                                <a href="#" class="btn">Explore More</a>
+                                <button class="watch-video" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                    <img src="pictures/play-icon.svg" alt="Play">
+                                    <span>Watch video</span>
+                                </button>
+                            </div>
+                            <img src="pictures/history-pattern.png" alt="" class="history__pattern">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="history__video-block">
+                            <img src="pictures/history-image.png" alt="Hotel Interior" class="history__main-img w-100 object-fit-cover">
+                            <div class="history__play-overlay">
+                                <img src="pictures/play-button-big.png" alt="Play Video">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS WITH CAROUSEL WIDGET ===== -->
+        <section class="testimonials py-5" id="testimonials">
+            <div class="container">
+                <div class="testimonials__header mb-5">
+                    <h2 class="section-title testimonials__title mb-3">Our Happy Customers</h2>
+                    <p class="testimonials__subtitle text-start mb-0">Know about our clients, we are a worldwide corporate brand</p>
+                </div>
+
+                <!-- ✅ ПРАВКА 9: Исправлен порядок слайдов в карусели -->
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Slide 1: Albert Florise active (middle) -->
+                        <div class="carousel-item active">
+                            <div class="row g-4">
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card">
+                                        <img src="pictures/customer-3.png" alt="Jenny Wilson" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Jenny Wilson</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Bank of America</span>
+                                        <p class="testimonial-card__text mb-0">Necessary to deliver white glove, fully managed campaigns that surpass industry benchmarks.</p>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card testimonial-card--active">
+                                        <img src="pictures/customer-2.png" alt="Albert Florise" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Albert Florise</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Nintendo</span>
+                                        <p class="testimonial-card__text mb-0">Necessary to deliver white glove, fully managed campaigns that surpass industry benchmarks.</p>
+                                        <img src="pictures/quotes-pattern.png" alt="" class="testimonial-card__pattern">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card">
+                                        <img src="pictures/customer-1.png" alt="Wade Warren" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Wade Warren</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Louis Vuitton</span>
+                                        <p class="testimonial-card__text mb-0">Necessary to deliver white glove, fully managed campaigns that surpass industry benchmarks.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2: Jenny Wilson active (middle) -->
+                        <div class="carousel-item">
+                            <div class="row g-4">
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card">
+                                        <img src="pictures/customer-1.png" alt="Wade Warren" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Wade Warren</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Louis Vuitton</span>
+                                        <p class="testimonial-card__text mb-0">The staff went above and beyond to make our stay memorable.</p>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card testimonial-card--active">
+                                        <img src="pictures/customer-3.png" alt="Jenny Wilson" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Jenny Wilson</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Bank of America</span>
+                                        <p class="testimonial-card__text mb-0">Exceptional service and attention to detail. Will definitely return!</p>
+                                        <img src="pictures/quotes-pattern.png" alt="" class="testimonial-card__pattern">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card">
+                                        <img src="pictures/customer-2.png" alt="Albert Florise" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Albert Florise</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Nintendo</span>
+                                        <p class="testimonial-card__text mb-0">Perfect location, stunning rooms, and incredible dining options.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ✅ ПРАВКА 9: Добавлен слайд 3: Wade Warren active (middle) -->
+                        <div class="carousel-item">
+                            <div class="row g-4">
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card">
+                                        <img src="pictures/customer-2.png" alt="Albert Florise" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Albert Florise</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Nintendo</span>
+                                        <p class="testimonial-card__text mb-0">Perfect location, stunning rooms, and incredible dining options.</p>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card testimonial-card--active">
+                                        <img src="pictures/customer-1.png" alt="Wade Warren" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Wade Warren</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Louis Vuitton</span>
+                                        <p class="testimonial-card__text mb-0">The staff went above and beyond to make our stay memorable.</p>
+                                        <img src="pictures/quotes-pattern.png" alt="" class="testimonial-card__pattern">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4">
+                                    <div class="testimonial-card">
+                                        <img src="pictures/customer-3.png" alt="Jenny Wilson" class="testimonial-card__avatar mb-3">
+                                        <h3 class="testimonial-card__name mb-1">Jenny Wilson</h3>
+                                        <span class="testimonial-card__company d-block mb-3">Bank of America</span>
+                                        <p class="testimonial-card__text mb-0">Exceptional service and attention to detail. Will definitely return!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BLOG WITH COLLAPSE ===== -->
+        <section class="blog pb-5" id="blog">
+            <div class="container">
+                <div class="blog__header mb-5">
+                    <span class="section-top-title d-block mb-2">HOTEL BLOG</span>
+                    <h2 class="section-title mb-0">Our News</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="pictures/news-1.png" alt="Travel with Map" class="w-100 object-fit-cover">
+                            </div>
+                            <div class="news-card__content p-4 d-flex flex-column">
+                                <div class="news-card__meta d-flex gap-3 mb-3">
+                                    <span class="meta-item"><img src="pictures/icon-travel.png" alt=""> Travel</span>
+                                    <span class="meta-item"><img src="pictures/icon-comment.png" alt=""> 2 Comment</span>
+                                </div>
+                                <h3 class="news-card__title mb-3">How To Travel With Map</h3>
+                                <p class="news-card__text mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <!-- Collapse Widget: Read More for Blog -->
+                                <div class="collapse" id="blog1Collapse">
+                                    <p class="news-card__text mb-3">Additional details about traveling with maps, navigation tips, and recommended apps for seamless journey planning.</p>
+                                </div>
+                                <button class="btn btn-sm btn-link p-0 mt-auto" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#blog1Collapse" aria-expanded="false">
+                                    Read More <img src="pictures/icon-arrow-read.png" alt="">
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="pictures/news-2.png" alt="Single Contrast Room" class="w-100 object-fit-cover">
+                            </div>
+                            <div class="news-card__content p-4 d-flex flex-column">
+                                <div class="news-card__meta d-flex gap-3 mb-3">
+                                    <span class="meta-item"><img src="pictures/icon-travel.png" alt=""> Travel</span>
+                                    <span class="meta-item"><img src="pictures/icon-comment.png" alt=""> 2 Comment</span>
+                                </div>
+                                <h3 class="news-card__title mb-3">Single Contrast Room</h3>
+                                <p class="news-card__text mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="collapse" id="blog2Collapse">
+                                    <p class="news-card__text mb-3">Learn about our signature room design, premium materials, and thoughtful amenities that create the perfect retreat.</p>
+                                </div>
+                                <button class="btn btn-sm btn-link p-0 mt-auto" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#blog2Collapse" aria-expanded="false">
+                                    Read More <img src="pictures/icon-arrow-read.png" alt="">
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="news-card">
+                            <div class="news-card__image">
+                                <img src="pictures/news-3.png" alt="Luxury Twin Room" class="w-100 object-fit-cover">
+                            </div>
+                            <div class="news-card__content p-4 d-flex flex-column">
+                                <div class="news-card__meta d-flex gap-3 mb-3">
+                                    <span class="meta-item"><img src="pictures/icon-travel.png" alt=""> Travel</span>
+                                    <span class="meta-item"><img src="pictures/icon-comment.png" alt=""> 2 Comment</span>
+                                </div>
+                                <h3 class="news-card__title mb-3">Luxury Twin Room</h3>
+                                <p class="news-card__text mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div class="collapse" id="blog3Collapse">
+                                    <p class="news-card__text mb-3">Discover the perfect balance of comfort and style in our twin rooms, ideal for friends or colleagues traveling together.</p>
+                                </div>
+                                <button class="btn btn-sm btn-link p-0 mt-auto" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#blog3Collapse" aria-expanded="false">
+                                    Read More <img src="pictures/icon-arrow-read.png" alt="">
+                                </button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== NEWSLETTER ===== -->
+        <section class="newsletter pb-5" id="newsletter">
+            <div class="container">
+                <div class="newsletter__card">
+                    <img src="pictures/newsletter-pattern-top.png" alt="" class="newsletter__pattern newsletter__pattern--top">
+                    <img src="pictures/newsletter-pattern-bottom.png" alt="" class="newsletter__pattern newsletter__pattern--bottom">
+                    <span class="newsletter__subtitle d-block mb-2">Stay in Touch</span>
+                    <h2 class="newsletter__title mb-4">Signup to receive news and <br> updates from our hotel.</h2>
+                    <form class="newsletter__form d-flex flex-column flex-lg-row gap-3 justify-content-center">
+                        <input type="email" placeholder="Enter Your Email Address" required class="flex-grow-1"
+                               data-bs-toggle="tooltip" data-bs-placement="top" title="We never share your email">
+                        <button type="submit">subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ WITH ACCORDION WIDGET ===== -->
+        <section class="faq py-5" id="faq">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title mb-3">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Find answers to common questions about our hotel</p>
+                </div>
+                <!-- Accordion Widget -->
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                What time is check-in and check-out?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Check-in time is 3:00 PM and check-out time is 12:00 PM. Early check-in and late check-out are subject to availability and may incur additional charges.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Do you offer airport transportation?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, we provide complimentary airport shuttle service for all guests. Please contact our concierge at least 24 hours in advance to arrange pickup.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Is breakfast included in the room rate?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Breakfast is included with all suite bookings and can be added to standard room reservations for an additional fee. Our gourmet breakfast buffet is served daily from 6:30 AM to 10:30 AM.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Do you have parking facilities?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, we offer secure underground parking for our guests. Valet parking is available for $35 per night, or self-parking for $25 per night. Electric vehicle charging stations are also available.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER WITH ACCORDION FOR MOBILE ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__main">
+                <div class="row g-4 align-items-center">
+                    <div class="col-12 col-lg-4">
+                        <a href="https://praktika/home.html" class="logo footer__logo mb-3 d-inline-block" aria-label="На главную страницу">
+                            <img src="pictures/logo.svg" alt="Logo">
+                        </a>
+                        <p class="footer__description mb-0">Itawa is a responsive real estate landing page template. Itawa is a landing page template.</p>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <h3 class="footer__title mb-4">Contact Us</h3>
+                        <ul class="footer__contacts list-unstyled">
+                            <li class="d-flex align-items-start gap-3 mb-3">
+                                <img src="pictures/icon-location.png" alt="Address" title="Адрес отеля" class="mt-1">
+                                <span>123 Business Centre London SW1A 1AA</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 mb-3">
+                                <img src="pictures/icon-phone.png" alt="Phone" title="Телефон">
+                                <span>+1 0000 000 00</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3">
+                                <img src="pictures/icon-email.png" alt="Email" title="Email">
+                                <span>info@businessname.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <h3 class="footer__title mb-4">Follow Us</h3>
+                        <div class="footer__socials d-flex gap-3 mb-3">
+                            <a href="#"><img src="pictures/icon-facebook.png" alt="Facebook"></a>
+                            <a href="#"><img src="pictures/icon-instagram.png" alt="Instagram"></a>
+                            <a href="#"><img src="pictures/icon-twitter.png" alt="Twitter"></a>
+                        </div>
+                        <p class="footer__description mb-0">Itawa is a responsive real estate landing page template. Itawa is a landing page template.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="container">
+                <div class="row align-items-center g-3">
+                    <div class="col-12 col-md-6 text-center text-md-start">
+                        <p class="mb-0">©HOTEL Official 2022</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="footer__links d-flex justify-content-center justify-content-md-end gap-4 flex-wrap">
+                            <a href="#">Privacy policy</a>
+                            <a href="#">Cookies</a>
+                            <a href="#">Terms of service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="Hotel Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS + скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // ===== Инициализация tooltip =====
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // ===== Инициализация Toast =====
+            const toastEl = document.getElementById('liveToast');
+            const toast = toastEl ? new bootstrap.Toast(toastEl) : null;
+
+            // ===== Логика прогресс-бара формы бронирования =====
+            const bookingForm = document.getElementById('bookingForm');
+            const progressBar = document.querySelector('#reservationModal .progress-bar');
+
+            if (bookingForm && progressBar) {
+                // Поля, которые учитываем в прогрессе (4 required + 1 select)
+                const trackedFields = bookingForm.querySelectorAll('input[required], select');
+                const totalFields = 5; // Фиксированное количество для точного расчёта
+
+                function updateProgress() {
+                    let filledCount = 0;
+
+                    trackedFields.forEach(field => {
+                        if (field.type === 'checkbox' || field.type === 'radio') {
+                            if (field.checked) filledCount++;
+                        } else if (field.value && field.value.trim() !== '') {
+                            filledCount++;
+                        }
+                    });
+
+                    // Select считаем заполненным, если есть значение
+                    const roomSelect = bookingForm.querySelector('select');
+                    if (roomSelect && roomSelect.value) filledCount++;
+
+                    // Ограничиваем 100%, округляем
+                    const percentage = Math.min(100, Math.round((filledCount / totalFields) * 100));
+
+                    progressBar.style.width = percentage + '%';
+                    progressBar.setAttribute('aria-valuenow', percentage);
+
+                    // Визуальный эффект при 100%
+                    if (percentage === 100) {
+                        progressBar.classList.add('bg-success');
+                        progressBar.classList.remove('bg-primary');
+                    } else {
+                        progressBar.classList.remove('bg-success');
+                        progressBar.classList.add('bg-primary');
+                    }
+                }
+
+                // Слушаем изменения в реальном времени
+                bookingForm.addEventListener('input', updateProgress);
+                bookingForm.addEventListener('change', updateProgress);
+
+                // Первоначальная инициализация
+                updateProgress();
+
+                // ===== Обработка отправки формы =====
+                bookingForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    //  КЛЮЧЕВОЕ: устанавливаем 100% при подтверждении бронирования
+                    progressBar.style.width = '100%';
+                    progressBar.setAttribute('aria-valuenow', 100);
+                    progressBar.classList.add('bg-success');
+
+                    // Показываем уведомление
+                    if (toast) {
+                        toast.show();
+                    }
+
+                    // Сбрасываем форму
+                    bookingForm.reset();
+
+                    // Возвращаем прогресс в исходное состояние после сброса (с задержкой)
+                    setTimeout(() => {
+                        progressBar.classList.remove('bg-success');
+                        progressBar.classList.add('bg-primary');
+                        updateProgress();
+                    }, 2000);
+                });
+            }
+
+            // ===== Обработка ошибок изображений =====
+            const img = document.querySelector('.hero__building');
+            const wrapper = img?.parentElement;
+            if (img && wrapper) {
+                img.addEventListener('error', function () {
+                    wrapper.classList.add('no-image');
+                });
+                if (img.complete && img.naturalWidth === 0) {
+                    wrapper.classList.add('no-image');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
